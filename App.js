@@ -8,6 +8,7 @@ import LoginScreen from './src/components/screens/LoginScreen';
 import RegisterScreen from './src/components/screens/RegisterScreen';
 import ChatScreen from './src/components/screens/ChatScreen';
 import ChatBoxHeader from './src/components/includes/ChatBoxHeader';
+import SearchListScreen from './src/components/screens/SearchListScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ function App() {
           </Stack.Group>
           <Stack.Screen name="Home" component={Home} options={{title: 'SpaceX', headerShown: false}} />
           <Stack.Screen name='ChatScreen' component={ChatScreen} options={({ route, navigation }) => ({ header: () => (<ChatBoxHeader navigation={navigation} currentUserDetails={route.params?.currentUserDetails} profilePic={route.params?.profilePic} userName={route.params?.username} />) })} />
+          <Stack.Screen name="SearchScreen" component={SearchListScreen} options={{headerShown: false}} />
       </Stack.Navigator>
     </NavigationContainer>
 

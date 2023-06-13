@@ -15,6 +15,8 @@
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "firebase": "^9.22.1",
+    "lottie-ios": "^3.1.8",
+    "lottie-react-native": "^5.1.6",
     "react": "18.2.0",
     "react-native": "0.71.8",
     "react-native-a": "^1.0.1",

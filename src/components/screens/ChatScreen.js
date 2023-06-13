@@ -12,7 +12,7 @@ import MicIcon from "../../assets/icons/mic.svg"
 import PaperClip from "../../assets/icons/paper-clip.svg"
 
 const ChatScreen = ({route, navigation}) => {
-    const { username, profilePic, chatboxid, selectUser, selectedUsername, selectedUserprofilePic } = route.params;
+    const {chatboxid, selectUser, selectedUsername, selectedUserprofilePic } = route.params;
     const [message, setMessage] = useState("")
     const [load, setLoad] = useState(false)
     let [chatDetails, setChatDetails] = useState(null)
@@ -106,12 +106,12 @@ const ChatScreen = ({route, navigation}) => {
 
   const renderChats = () => {
     return render ? chatDetails.messages.map((chat) => (
-      <View  style={chat.senderdata.useruid == auth.currentUser.uid ? {flexDirection: 'row-reverse', paddingHorizontal: 10} : {flexDirection: 'row', paddingHorizontal: 10}}>
+      <View key={chat.messageid}  style={chat.senderdata.useruid == auth.currentUser.uid ? {flexDirection: 'row-reverse', paddingHorizontal: 10} : {flexDirection: 'row', paddingHorizontal: 10}}>
         <View >
           {
             chat.messagetype == "text" ? (
-              <View style={{backgroundColor: "blue", maxWidth: 250, minWidth: 100, marginBottom: 10, padding: 10, borderRadius: 10}}>
-                <Text style={{fontSize: 20, color: "white"}}>{chat.message}</Text>
+              <View style={chat.senderdata.useruid == auth.currentUser.uid ? {backgroundColor: "#FF8551", maxWidth: 250, minWidth: 100, marginBottom: 10, padding: 10, borderRadius: 10} : {backgroundColor: "#a7bb6664", maxWidth: 250, minWidth: 100, marginBottom: 10, padding: 10, borderRadius: 10}}>
+                <Text style={{fontSize: 20, color: "black"}}>{chat.message}</Text>
               </View>
 
             ): null
@@ -128,7 +128,7 @@ const ChatScreen = ({route, navigation}) => {
 
   return (
     <View style={{flex: 1}}>
-      <ScrollView ref={scrollViewRef} onContentSizeChange={() => handleScroll()}>
+      <ScrollView style={{paddingTop: 10}} ref={scrollViewRef} onContentSizeChange={() => handleScroll()}>
         {renderChats()}
       </ScrollView>
       <View style={{flexDirection: 'row', alignItems: 'center', width: "100%"}} >
